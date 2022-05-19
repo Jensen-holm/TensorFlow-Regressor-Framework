@@ -1,24 +1,11 @@
-#%%
-"""
-What: tensorflow Sequential model
-Why: predict summer league bsbl performance
-specs: tensorflow keras sequential regression model
-"""
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler
-# from sklearn.preprocessing import Normalizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
-
-"""
-
-in the process of training and testing these settings 
-
-"""
 
 class model():
 
@@ -67,10 +54,6 @@ class model():
 
             self.features_train_scaled = ct.fit_transform(self.features_train)
             self.features_test_scaled = ct.fit_transform(self.features_test)
-
-            # # I do not know if we will even need this block
-            # self.labels_train_scaled = ctlabels.fit_transform(self.labels_train)
-            # self.labels_test_scaled = ctlabels.fit_transform(self.labels_test)
 
             my_model.add(layers.InputLayer(input_shape = (self.features_train_scaled.shape[1])))
             # adding hidden layers
